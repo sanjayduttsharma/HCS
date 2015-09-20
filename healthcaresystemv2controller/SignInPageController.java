@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 /**
@@ -19,11 +20,11 @@ import javafx.scene.control.TextField;
  */
 public class SignInPageController implements Initializable {
     
-    @FXML private TextField userId;
-    @FXML private TextField password;
+    @FXML private TextField userIdFld;
+    @FXML private PasswordField passwordFld;
     @FXML private Button signInBtn;
     @FXML private Button docRegBtn;
-    @FXML private Label message;
+    @FXML private Label messageLbl;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
