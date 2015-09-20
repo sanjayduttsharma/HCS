@@ -34,7 +34,9 @@ public class HealthCareSystemV2 extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
+        
         model = Model.getModelInstance();
+        model.setStage(stage);
         loader = new FXMLLoader();
         loadFirstPage();
         
@@ -71,6 +73,7 @@ public class HealthCareSystemV2 extends Application {
             setSceneDraggable();
             controller = loader.getController();
             controller.setModel(model);
+            controller.initializeController();
         } catch (IOException e) {
             System.err.println("Loading Error in loadFirstPage.");
             System.err.println(e);

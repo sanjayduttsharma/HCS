@@ -13,25 +13,29 @@ import javafx.scene.input.MouseEvent;
 /* @author Justin */
 
 public class Controller {
-    private Model model;
+    protected Model model;
     
     @FXML private Button exitBtn;
     @FXML private Button minimizeBtn;
     @FXML private Button sizeAdjustBtn;
     
+    public void initializeController() {
+        //bindings
+    }
+    
     @FXML
     public void platformClose() {
-        Platform.exit();
+        model.platformExit();
     }
     
     @FXML
     public void maximize() {
-        
+        model.maximize();
     }
     
     @FXML
     public void minimize() {
-        
+        model.minimize();
     }
     
     public void setModel(Model model) {

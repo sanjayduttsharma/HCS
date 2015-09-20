@@ -6,17 +6,27 @@
 package healthcaresystemv2;
 
 import healthcaresystemv2controller.Controller;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.scene.Scene;
+import javafx.scene.input.KeyCombination;
+import javafx.stage.Stage;
 
 /* @author Justin */
 
 public class Model {
     private static Model uniqueModel = null;
+    
+    private Stage stage;
+    private Scene primaryScene;
     
     private ArrayList<Controller> controllerList;
     final private ArrayList<String> pageList;
@@ -34,8 +44,10 @@ public class Model {
     private static Statement statement = null;
     private static ResultSet resultSet = null;
     
-    private String crntUserId;
-    private String crntUuserPw;
+    private String userId;
+    private String userPw;
+    
+    private StringProperty signInMsg = new SimpleStringProperty(this, "signInMsg");
     
     private Model() {
         controllerList = new ArrayList<>();
@@ -64,8 +76,87 @@ public class Model {
         controllerList.add(controller);
     }
     
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+    
+    public void setScene(Scene scene) {
+        primaryScene = scene;
+    }
+    
     public ArrayList<String> pageList() {
         return pageList;
+    }
+    
+    public void platformExit() {
+        Platform.exit();
+    }
+    
+    public void maximize() {
+        stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+        if(stage.isFullScreen())
+            stage.setFullScreen(false);
+        else
+            stage.setFullScreen(true);
+    }
+    
+    public void minimize() {
+        stage.setIconified(true);
+    }
+    
+    public void setUserId(String userId) {
+        this.userId = userId.toUpperCase();
+        System.out.println(this.userId);
+    }
+    
+    public void setUserPw(String userPw) {
+        this.userPw = userPw;
+    }
+    
+    // =============== Sign in ===================
+    public void signIn() {
+        String idColumn, pwColumn, tableName;
+        String query;
+        
+        if(userId.startsWith("P")) {
+            idColumn = "patient_id";
+            pwColumn = "password";
+            tableName = "patient";
+        }
+        else if(userId.startsWith("D")) {
+            idColumn = "doctor_id";
+            pwColumn = "password";
+            tableName = "doctor";
+        }
+        else if(userId.startsWith("A")) {
+            idColumn = "admin_id";
+            pwColumn = "password";
+            tableName = "administrator";
+        }
+        else {
+            signInMsg.set("Wrong User ID/Password!");
+            return;
+        }
+        
+        query = "SELECT " + idColumn + ", " + pwColumn + " FROM " + tableName;
+        query += " WHERE " + idColumn + " = '" + userId + "' && " + pwColumn + " = '" + userPw + "'";
+        
+        System.out.println(query); //debugging purposes
+        
+        try {
+            resultSet = statement.executeQuery(query);
+            if(resultSet.isBeforeFirst())
+                signInMsg.set("Sign in successful!");
+            else
+                signInMsg.set("Wrong User ID/Password!");
+        } catch(SQLException e) {
+            System.err.println(e);
+        }
+        
+    }
+    
+    public StringProperty signInMsgProperty() {
+        return signInMsg;
     }
     
 }

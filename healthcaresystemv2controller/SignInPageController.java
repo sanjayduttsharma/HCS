@@ -18,17 +18,22 @@ import javafx.scene.control.TextField;
  *
  * @author Justin
  */
-public class SignInPageController extends Controller implements Initializable {
+public class SignInPageController extends Controller {
     
     @FXML private TextField userIdFld;
-    @FXML private PasswordField passwordFld;
+    @FXML private PasswordField userPwFld;
     @FXML private Button signInBtn;
     @FXML private Button docRegBtn;
-    @FXML private Label messageLbl;
+    @FXML private Label msgLbl;
     
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-//        userIdFld.textProperty().bindBidirectional(messageLbl.textProperty());
+    public void initializeController() {
+        msgLbl.textProperty().bind(model.signInMsgProperty());
+    }
+    
+    public void signInAction() {
+        model.setUserId(userIdFld.getText());
+        model.setUserPw(userPwFld.getText());
+        model.signIn();
     }
     
 }

@@ -15,12 +15,19 @@
     -fx-text-fill: #F7F7F7;
 }
 
-#header, #titlehbox, #btn {
+#header, #btn {
     -fx-background-color: #3E4147;
     -fx-background-radius: 3,3,3,3;
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
     -fx-opacity: 0.9;
 }
+
+#titlehbox {
+    -fx-background-color: #3E4147;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 2, 0.0 , 0 , 1 );
+    -fx-opacity: 0.9;
+}
+
 #header #text {
     /*-fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.9) , 1, 0.0 , 0 , 1 );*/
     -fx-text-fill: #eeeeee;

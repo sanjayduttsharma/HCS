@@ -78,7 +78,7 @@
                                     <Insets left="10.0" />
                                  </VBox.margin>
                               </Label>
-                              <PasswordField fx:id="passwordFld" promptText="Password">
+                              <PasswordField fx:id="userPwFld" onAction="#signInAction" promptText="Password">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -93,7 +93,7 @@
                         </VBox>
                         <HBox alignment="CENTER_LEFT" spacing="15.0">
                            <children>
-                              <Button id="btn" fx:id="signInBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Sign in">
+                              <Button id="btn" fx:id="signInBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#signInAction" text="Sign in">
                                  <VBox.margin>
                                     <Insets left="20.0" right="20.0" top="8.0" />
                                  </VBox.margin>
@@ -114,7 +114,7 @@
                               <Insets left="15.0" right="15.0" top="10.0" />
                            </VBox.margin>
                         </HBox>
-                        <Label fx:id="messageLbl" maxWidth="230.0">
+                        <Label fx:id="msgLbl" maxWidth="230.0">
                            <VBox.margin>
                               <Insets left="25.0" top="5.0" />
                            </VBox.margin>
