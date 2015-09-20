@@ -44,9 +44,8 @@ public class Model {
     private static Statement statement = null;
     private static ResultSet resultSet = null;
     
-    private String userId;
-    private String userPw;
-    
+    private StringProperty userId = new SimpleStringProperty(this, "userId");
+    private StringProperty userPw = new SimpleStringProperty(this, "userPw");
     private StringProperty signInMsg = new SimpleStringProperty(this, "signInMsg");
     
     private Model() {
@@ -56,13 +55,15 @@ public class Model {
         pageList.add(PATIENTPAGE);
 //        pageList.add(DOCTORPAGE);
 //        pageList.add(ADMINPAGE);
+        
         try {
-            connDB = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-            System.out.println("DB Connected...");
+            connDB = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);            
             statement = connDB.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            System.out.println("DB Connected.");
         } catch(SQLException e) {
             System.err.print(e);
         }
+        
     }
     
     public static Model getModelInstance() throws SQLException {
@@ -104,34 +105,41 @@ public class Model {
         stage.setIconified(true);
     }
     
-    public void setUserId(String userId) {
-        this.userId = userId.toUpperCase();
-        System.out.println(this.userId);
-    }
-    
-    public void setUserPw(String userPw) {
-        this.userPw = userPw;
-    }
-    
     // =============== Sign in ===================
     public void signIn() {
         String idColumn, pwColumn, tableName;
         String query;
         
-        if(userId.startsWith("P")) {
+        if(userId.get() == null)
+            userId.set("");
+        
+        userId.set(userId.get().toUpperCase());
+        if(userId.get().startsWith("P")) {
             idColumn = "patient_id";
             pwColumn = "password";
             tableName = "patient";
         }
-        else if(userId.startsWith("D")) {
+        else if(userId.get().startsWith("D")) {
             idColumn = "doctor_id";
             pwColumn = "password";
             tableName = "doctor";
         }
-        else if(userId.startsWith("A")) {
+        else if(userId.get().startsWith("A")) {
             idColumn = "admin_id";
             pwColumn = "password";
             tableName = "administrator";
+        }
+        else if(userId.get().equals("")) {
+            signInMsg.set("You must enter your User ID");
+            return;
+        }
+        else if(userPw.get().equals("")) {
+            signInMsg.set("You must enter your Password");
+            return;
+        }
+        else if(userId.get().equals("") && userPw.get().equals("")) {
+            signInMsg.set("You must enter your User ID and Password");
+            return;
         }
         else {
             signInMsg.set("Wrong User ID/Password!");
@@ -139,7 +147,7 @@ public class Model {
         }
         
         query = "SELECT " + idColumn + ", " + pwColumn + " FROM " + tableName;
-        query += " WHERE " + idColumn + " = '" + userId + "' && " + pwColumn + " = '" + userPw + "'";
+        query += " WHERE " + idColumn + " = '" + userId.get() + "' && " + pwColumn + " = '" + userPw.get() + "'";
         
         System.out.println(query); //debugging purposes
         
@@ -148,7 +156,7 @@ public class Model {
             if(resultSet.isBeforeFirst())
                 signInMsg.set("Sign in successful!");
             else
-                signInMsg.set("Wrong User ID/Password!");
+                signInMsg.set("Wrong User ID/Password");
         } catch(SQLException e) {
             System.err.println(e);
         }
@@ -157,6 +165,14 @@ public class Model {
     
     public StringProperty signInMsgProperty() {
         return signInMsg;
+    }
+    
+    public StringProperty userIdProperty() {
+        return userId;
+    }
+    
+    public StringProperty userPwProperty() {
+        return userPw;
     }
     
 }
