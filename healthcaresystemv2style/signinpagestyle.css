@@ -6,33 +6,49 @@
     -fx-background-color: #ffffff;
 }
 
-#titlehbox {
+/*#titlehbox {
     -fx-background-color: #3B3737;
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 1.8, 0.0 , 0 , 1 );
-}
+}*/
 
 #title {
     -fx-text-fill: #F7F7F7;
 }
 
-#header {
+#header, #titlehbox, #btn {
     -fx-background-color: #3E4147;
     -fx-background-radius: 3,3,3,3;
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-opacity: 0.9;
 }
 #header #text {
     /*-fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.9) , 1, 0.0 , 0 , 1 );*/
     -fx-text-fill: #eeeeee;
     -fx-font-size: 16px;
     -fx-font-weight: 900;
-    /*-fx-font-weight: 900;*/
 }
 
 #vbox {
     -fx-border-color: rgba(30,30,30,0.3);
 }
 
-#exitBtn, #sizeAdjustBtn, #minimizeBtn {
+#exitBtn, #maximizeBtn, #minimizeBtn {
     -fx-border-color: transparent;
     -fx-background-color: transparent;
+    -fx-background-radius: 0,0,0,0;
+}
+
+#exitBtn:hover, #maximizeBtn:hover, #minimizeBtn:hover {
+    -fx-background-color: orange;
+}
+
+#btn {
+    -fx-text-fill: #eeeeee;
+    -fx-font-weight: 700;
+    -fx-font-size: 14px;
+}
+
+#btn:hover {
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.5 , 0.5 , 1 );
+    -fx-text-fill: #ffffff;
 }

@@ -5,6 +5,8 @@
  */
 package healthcaresystemv2;
 
+import healthcaresystemv2controller.Controller;
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -24,20 +26,17 @@ public class HealthCareSystemV2 extends Application {
     private Parent root;
     private Scene primaryScene;
     private Stage stage;
+    private Model model;
+    private Controller controller;
     
     private double x, y;
     
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
-        
+        model = Model.getModelInstance();
         loader = new FXMLLoader();
-        loader.setLocation(HealthCareSystemV2.class.getResource("SignInPage.fxml"));
-        
-        root = loader.load(); //root => "LoginPage.fxml"
-        primaryScene = new Scene(root); //primaryScene's root node => "root"
-        setSceneDraggable();
-        setSceneMenuBar();
+        loadFirstPage();
         
         //stage now shows "LoginPage.fxml"
         stage.initStyle(StageStyle.TRANSPARENT);
@@ -64,8 +63,18 @@ public class HealthCareSystemV2 extends Application {
         });
     }
     
-    public void setSceneMenuBar() {
-        
+    public void loadFirstPage() {
+        try {
+            loader.setLocation(HealthCareSystemV2.class.getResource(Model.SIGNINPAGE));
+            root = loader.load(); //root => "LoginPage.fxml"
+            primaryScene = new Scene(root); //primaryScene's root node => "root"
+            setSceneDraggable();
+            controller = loader.getController();
+            controller.setModel(model);
+        } catch (IOException e) {
+            System.err.println("Loading Error in loadFirstPage.");
+            System.err.println(e);
+        }
     }
     
     public static void main(String[] args) {

@@ -27,7 +27,7 @@
                <children>
                   <HBox id="header" alignment="CENTER_LEFT" GridPane.columnSpan="2">
                      <children>
-                        <Label id="text" text="HCS Sign in">
+                        <Label id="text" text="Sign in">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -153,11 +153,11 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="1">
+                  <HBox alignment="TOP_RIGHT" GridPane.columnIndex="1">
                      <children>
-                        <Button id="minimizeBtn" mnemonicParsing="false" GridPane.columnIndex="1">
+                        <Button id="minimizeBtn" fx:id="minimizeBtn" mnemonicParsing="false" onAction="#minimize" GridPane.columnIndex="1">
                            <graphic>
-                              <ImageView pickOnBounds="true" preserveRatio="true">
+                              <ImageView blendMode="MULTIPLY" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@minimizeIcon.png" />
                                  </image>
@@ -167,9 +167,9 @@
                               <Font size="10.0" />
                            </font>
                         </Button>
-                        <Button id="sizeAdjustBtn" mnemonicParsing="false" GridPane.columnIndex="1">
+                        <Button id="maximizeBtn" fx:id="sizeAdjustBtn" mnemonicParsing="false" onAction="#maximize" GridPane.columnIndex="1">
                            <graphic>
-                              <ImageView pickOnBounds="true" preserveRatio="true">
+                              <ImageView blendMode="MULTIPLY" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@sizeAdjustIcon.png" />
                                  </image>
@@ -179,7 +179,7 @@
                               <Font size="10.0" />
                            </font>
                         </Button>
-                        <Button id="exitBtn" fx:id="exitBtn" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" opacity="0.7" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1">
+                        <Button id="exitBtn" fx:id="exitBtn" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#platformClose" onMouseClicked="#platformClose" opacity="0.7" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1">
                            <graphic>
                               <ImageView blendMode="MULTIPLY" pickOnBounds="true" preserveRatio="true">
                                  <image>
