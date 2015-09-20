@@ -5,6 +5,7 @@
  */
 package healthcaresystemv2controller;
 
+import java.awt.Image;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -13,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 
 /**
  *
@@ -25,10 +27,11 @@ public class SignInPageController implements Initializable {
     @FXML private Button signInBtn;
     @FXML private Button docRegBtn;
     @FXML private Label messageLbl;
+    @FXML private Button exitBtn;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+//        userIdFld.textProperty().bindBidirectional(messageLbl.textProperty());
     }    
     
 }

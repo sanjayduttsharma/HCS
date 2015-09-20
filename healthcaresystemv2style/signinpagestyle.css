@@ -2,14 +2,22 @@
  * Empty Stylesheet file.
  */
 
-#anchorpane {
+#borderpane {
     -fx-background-color: #ffffff;
 }
 
+#titlehbox {
+    -fx-background-color: #3B3737;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 1.8, 0.0 , 0 , 1 );
+}
+
+#title {
+    -fx-text-fill: #F7F7F7;
+}
+
 #header {
-    -fx-background-color: #38424b;
+    -fx-background-color: #3E4147;
     -fx-background-radius: 3,3,3,3;
-/*    -fx-background-insets: 0,1,2,0;*/
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }
 #header #text {
@@ -22,4 +30,9 @@
 
 #vbox {
     -fx-border-color: rgba(30,30,30,0.3);
+}
+
+#exitBtn, #sizeAdjustBtn, #minimizeBtn {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
 }

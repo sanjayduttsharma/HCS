@@ -37,6 +37,7 @@ public class HealthCareSystemV2 extends Application {
         root = loader.load(); //root => "LoginPage.fxml"
         primaryScene = new Scene(root); //primaryScene's root node => "root"
         setSceneDraggable();
+        setSceneMenuBar();
         
         //stage now shows "LoginPage.fxml"
         stage.initStyle(StageStyle.TRANSPARENT);
@@ -52,8 +53,6 @@ public class HealthCareSystemV2 extends Application {
             public void handle(MouseEvent mouseEvent) {
                 x = mouseEvent.getSceneX();
                 y = mouseEvent.getSceneY();
-                System.out.println(x);
-                System.out.println(y);
             }
         });
         primaryScene.setOnMouseDragged(new EventHandler<MouseEvent>() {
@@ -61,10 +60,12 @@ public class HealthCareSystemV2 extends Application {
             public void handle(MouseEvent mouseEvent) {
                 stage.setX(mouseEvent.getScreenX() - x);
                 stage.setY(mouseEvent.getScreenY() - y);
-                System.out.println(mouseEvent.getScreenX() + x);
-                System.out.println(mouseEvent.getScreenY() + y);
             }
         });
+    }
+    
+    public void setSceneMenuBar() {
+        
     }
     
     public static void main(String[] args) {
