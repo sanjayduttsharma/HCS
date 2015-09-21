@@ -16,8 +16,12 @@ import java.util.ArrayList;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCombination;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /* @author Justin */
@@ -27,6 +31,9 @@ public class Model {
     
     private Stage stage;
     private Scene primaryScene;
+    private Parent root;
+    private FXMLLoader loader;
+    private Controller controller;
     
     private ArrayList<Controller> controllerList;
     final private ArrayList<String> pageList;
@@ -47,6 +54,10 @@ public class Model {
     private StringProperty userId = new SimpleStringProperty(this, "userId");
     private StringProperty userPw = new SimpleStringProperty(this, "userPw");
     private StringProperty signInMsg = new SimpleStringProperty(this, "signInMsg");
+    
+    private Boolean isSignedIn = false;
+    
+    private double x, y;
     
     private Model() {
         controllerList = new ArrayList<>();
@@ -146,21 +157,72 @@ public class Model {
             return;
         }
         
+        //Create query string
         query = "SELECT " + idColumn + ", " + pwColumn + " FROM " + tableName;
         query += " WHERE " + idColumn + " = '" + userId.get() + "' && " + pwColumn + " = '" + userPw.get() + "'";
         
         System.out.println(query); //debugging purposes
         
+        //Execute query
         try {
             resultSet = statement.executeQuery(query);
-            if(resultSet.isBeforeFirst())
+            if(resultSet.isBeforeFirst()) {
                 signInMsg.set("Sign in successful!");
-            else
+                isSignedIn = true;
+            }
+            else {
                 signInMsg.set("Wrong User ID/Password");
+                isSignedIn = false;
+            }
         } catch(SQLException e) {
             System.err.println(e);
         }
         
+        //Switch to respective primaryScene if signed in.
+        String page;
+        if(isSignedIn) {
+            if(tableName.equals("patient")) {
+                page = PATIENTPAGE;
+            }
+            else if(tableName.equals("doctor")) {
+                page = DOCTORPAGE;
+            }
+            else {
+                page = ADMINPAGE;
+            }
+            try {
+                loader = new FXMLLoader();
+                loader.setLocation(HealthCareSystemV2.class.getResource(page));
+                root = loader.load();
+                primaryScene = new Scene(root);
+                setSceneDraggable();
+                controller = loader.getController();
+                controller.setModel(this);
+                controller.initializeController();
+                stage.setScene(primaryScene);
+            } catch(IOException e) {
+                System.err.println("Loading Error in signIn() loading section.");
+                System.err.println(e);
+            }
+        }
+        
+    }
+    
+    public void setSceneDraggable() {
+        primaryScene.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                x = mouseEvent.getSceneX();
+                y = mouseEvent.getSceneY();
+            }
+        });
+        primaryScene.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                stage.setX(mouseEvent.getScreenX() - x);
+                stage.setY(mouseEvent.getScreenY() - y);
+            }
+        });
     }
     
     public StringProperty signInMsgProperty() {
