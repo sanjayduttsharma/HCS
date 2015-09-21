@@ -23,6 +23,7 @@
               <rowConstraints>
                   <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="210.0" minHeight="210.0" prefHeight="210.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="ALWAYS" />
               </rowConstraints>
                <children>
                   <HBox id="header" alignment="CENTER_LEFT" GridPane.columnSpan="2">
@@ -134,7 +135,7 @@
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
@@ -153,9 +154,9 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="TOP_RIGHT" GridPane.columnIndex="1">
+                  <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="1">
                      <children>
-                        <Button id="minimizeBtn" fx:id="minimizeBtn" mnemonicParsing="false" onAction="#minimize" GridPane.columnIndex="1">
+                        <Button id="minimizeBtn" fx:id="minimizeBtn" alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" mnemonicParsing="false" onAction="#minimize" textAlignment="CENTER" GridPane.columnIndex="1">
                            <graphic>
                               <ImageView blendMode="MULTIPLY" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -164,10 +165,10 @@
                               </ImageView>
                            </graphic>
                            <font>
-                              <Font size="10.0" />
+                              <Font size="13.0" />
                            </font>
                         </Button>
-                        <Button id="maximizeBtn" fx:id="sizeAdjustBtn" mnemonicParsing="false" onAction="#maximize" GridPane.columnIndex="1">
+                        <Button id="maximizeBtn" fx:id="sizeAdjustBtn" alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" mnemonicParsing="false" onAction="#maximize" textAlignment="CENTER" GridPane.columnIndex="1">
                            <graphic>
                               <ImageView blendMode="MULTIPLY" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -176,23 +177,20 @@
                               </ImageView>
                            </graphic>
                            <font>
-                              <Font size="10.0" />
+                              <Font size="13.0" />
                            </font>
                         </Button>
-                        <Button id="exitBtn" fx:id="exitBtn" contentDisplay="CENTER" graphicTextGap="0.0" mnemonicParsing="false" onAction="#platformClose" onMouseClicked="#platformClose" opacity="0.7" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1">
+                        <Button id="exitBtn" fx:id="exitBtn" alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" mnemonicParsing="false" onAction="#platformClose" textAlignment="CENTER">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
                            <graphic>
-                              <ImageView blendMode="MULTIPLY" pickOnBounds="true" preserveRatio="true">
+                              <ImageView id="exitBtn" blendMode="MULTIPLY" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@exitIcon.png" />
                                  </image>
                               </ImageView>
                            </graphic>
-                           <font>
-                              <Font size="10.0" />
-                           </font>
-                           <opaqueInsets>
-                              <Insets bottom="-0.0" />
-                           </opaqueInsets>
                         </Button>
                      </children>
                   </HBox>

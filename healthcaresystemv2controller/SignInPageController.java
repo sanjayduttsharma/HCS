@@ -26,13 +26,14 @@ public class SignInPageController extends Controller {
     @FXML private Button docRegBtn;
     @FXML private Label msgLbl;
     
+    @Override
     public void initializeController() {
         msgLbl.textProperty().bind(model.signInMsgProperty());
+        userIdFld.textProperty().bindBidirectional(model.userIdProperty());
+        userPwFld.textProperty().bindBidirectional(model.userPwProperty());
     }
     
     public void signInAction() {
-        model.setUserId(userIdFld.getText());
-        model.setUserPw(userPwFld.getText());
         model.signIn();
     }
     
