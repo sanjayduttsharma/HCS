@@ -46,7 +46,7 @@
 }
 
 #exitBtn:hover, #maximizeBtn:hover, #minimizeBtn:hover {
-    -fx-background-color: brown;
+    -fx-background-color: orange;
 }
 
 #btn {
