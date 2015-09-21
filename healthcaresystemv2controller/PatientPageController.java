@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author Justin
  */
-public class PatientPageController implements Initializable {
+public class PatientPageController extends Controller implements Initializable {
 
     /**
      * Initializes the controller class.

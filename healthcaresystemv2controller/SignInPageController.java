@@ -11,23 +11,30 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 /**
  *
  * @author Justin
  */
-public class SignInPageController implements Initializable {
+public class SignInPageController extends Controller {
     
-    @FXML private TextField userId;
-    @FXML private TextField password;
+    @FXML private TextField userIdFld;
+    @FXML private PasswordField userPwFld;
     @FXML private Button signInBtn;
     @FXML private Button docRegBtn;
-    @FXML private Label message;
+    @FXML private Label msgLbl;
     
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        
-    }    
+    public void initializeController() {
+        msgLbl.textProperty().bind(model.signInMsgProperty());
+        userIdFld.textProperty().bindBidirectional(model.userIdProperty());
+        userPwFld.textProperty().bindBidirectional(model.userPwProperty());
+    }
+    
+    public void signInAction() {
+        model.signIn();
+    }
     
 }
