@@ -1,0 +1,5 @@
+
+Naming Conventions for the Project:
+    TextField/PasswordField => ends with "Fld"
+    Label => ends with "Lbl"
+    Button => ends with "Btn"
