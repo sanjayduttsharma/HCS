@@ -156,7 +156,7 @@
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="1">
                      <children>
-                        <Button id="minimizeBtn" fx:id="minimizeBtn" alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" mnemonicParsing="false" onAction="#minimize" textAlignment="CENTER" GridPane.columnIndex="1">
+                        <Button id="minimizeBtn" fx:id="minimizeBtn" alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#minimize" prefHeight="30.0" prefWidth="30.0" styleClass="windowBtn" textAlignment="CENTER" GridPane.columnIndex="1">
                            <graphic>
                               <ImageView blendMode="MULTIPLY" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -168,7 +168,7 @@
                               <Font size="13.0" />
                            </font>
                         </Button>
-                        <Button id="maximizeBtn" fx:id="sizeAdjustBtn" alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" mnemonicParsing="false" onAction="#maximize" textAlignment="CENTER" GridPane.columnIndex="1">
+                        <Button id="maximizeBtn" fx:id="sizeAdjustBtn" alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#maximize" prefHeight="30.0" prefWidth="30.0" styleClass="windowBtn" textAlignment="CENTER" GridPane.columnIndex="1">
                            <graphic>
                               <ImageView blendMode="MULTIPLY" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -180,7 +180,7 @@
                               <Font size="13.0" />
                            </font>
                         </Button>
-                        <Button id="exitBtn" fx:id="exitBtn" alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" mnemonicParsing="false" onAction="#platformClose" textAlignment="CENTER">
+                        <Button id="exitBtn" fx:id="exitBtn" alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#platformClose" prefHeight="30.0" prefWidth="30.0" styleClass="windowBtn" textAlignment="CENTER">
                            <font>
                               <Font size="13.0" />
                            </font>

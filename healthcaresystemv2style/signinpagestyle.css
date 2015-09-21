@@ -39,13 +39,13 @@
     -fx-border-color: rgba(30,30,30,0.3);
 }
 
-#exitBtn, #maximizeBtn, #minimizeBtn {
+.windowBtn {
     -fx-border-color: transparent;
     -fx-background-color: transparent;
     -fx-background-radius: 0,0,0,0;
 }
 
-#exitBtn:hover, #maximizeBtn:hover, #minimizeBtn:hover {
+.windowBtn:hover {
     -fx-background-color: brown;
 }
 

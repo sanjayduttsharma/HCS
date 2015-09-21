@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import java.util.*?>
@@ -7,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="healthcaresystemv2controller.PatientPageController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="900.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="healthcaresystemv2controller.PatientPageController">
     <stylesheets>
         <URL value="@/healthcaresystemv2style/patientpagestyle.css" />
     </stylesheets>
@@ -15,19 +18,71 @@
       <BorderPane layoutX="200.0" layoutY="80.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <GridPane BorderPane.alignment="CENTER">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               <children>
+                  <HBox id="titlehbox" alignment="CENTER_LEFT" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                     <children>
+                        <Label id="title" alignment="CENTER" contentDisplay="CENTER" text="Health Care System" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="100.0" />
+                           </GridPane.margin>
+                           <HBox.margin>
+                              <Insets left="100.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="1">
+                     <children>
+                        <Button id="minimizeBtn" fx:id="minimizeBtn" alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#minimize" prefHeight="30.0" prefWidth="30.0" styleClass="windowBtn" textAlignment="CENTER" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                           <graphic>
+                              <ImageView blendMode="MULTIPLY" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@minimizeIcon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button id="maximizeBtn" fx:id="sizeAdjustBtn" alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#maximize" prefHeight="30.0" prefWidth="30.0" styleClass="windowBtn" textAlignment="CENTER" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                           <graphic>
+                              <ImageView blendMode="MULTIPLY" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@sizeAdjustIcon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button id="exitBtn" fx:id="exitBtn" alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#platformClose" prefHeight="30.0" prefWidth="30.0" styleClass="windowBtn" textAlignment="CENTER">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                           <graphic>
+                              <ImageView id="exitBtn" blendMode="MULTIPLY" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@exitIcon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+               </rowConstraints>
             </GridPane>
          </top>
       </BorderPane>
